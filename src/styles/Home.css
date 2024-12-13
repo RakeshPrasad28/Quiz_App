@@ -1,0 +1,8 @@
+.container {
+  background: linear-gradient(to bottom, white, #af9cf3);
+  padding: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

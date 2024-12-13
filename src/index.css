@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.App {
+  text-align: center;
+}
+
+/* button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+} */
+
+/* button:hover {
+  background-color: #0056b3;
+} */
