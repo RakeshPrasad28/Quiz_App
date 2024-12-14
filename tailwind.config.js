@@ -16,7 +16,7 @@ export default {
       },
       screens:{
         'iphone14': '430px',
-        'iphone12': '390px',
+        'iphone12': '360px',
       }
     },
   },
