@@ -224,7 +224,7 @@ const Quiz = () => {
               </div>
             </div>
             {showAnswerTimer && (
-              <AnswerTimer duration={1000} onTimeUp={onTimeUp} />
+              <AnswerTimer duration={10} onTimeUp={onTimeUp} />
             )}
           </div>
         ) : (
