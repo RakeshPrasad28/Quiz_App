@@ -125,32 +125,6 @@ const Quiz = () => {
       );
     }
   
-    if (type === "Image MCQs") {
-      return (
-        <div className="mt-5 grid grid-cols-2 gap-4">
-          {choices &&
-            choices.map((answer, index) => (
-              <div
-                key={index}
-                onClick={() => onAnswerClick(answer.label, index)}
-                className={`${
-                  answerIndex === index
-                    ? "bg-custom-correct-background"
-                    : "bg-custom-option-background"
-                } mt-5 rounded-lg cursor-pointer hover:scale-105 ease-in-out duration-300 flex flex-col items-center`}
-              >
-                <img
-                  src={answer.image} 
-                  alt={answer.label}
-                  className={`rounded-lg ${answerIndex === index ? "border-4 border-green-500" : ""}`}
-                  style={{ maxWidth: "150px", maxHeight: "150px" }} 
-                />
-                <span className="mt-2 text-center">{answer.label}</span>
-              </div>
-            ))}
-        </div>
-      );
-    }
   
     return (
       <div className="mt-5">
@@ -187,14 +161,14 @@ const Quiz = () => {
 
   return (
     <div className="bg-gradient-to-b from-white to-custom-purple w-screen h-screen py-5 md:py-10 flex items-center justify-center">
-      <div className="iphone14:w-[95vw]  iphone14:min-h-[65vh] sm:w-72 md:w-80 lg:w-80 xl:w-96 mx-auto flex flex-col justify-center items-center shadow-xl pt-5 md:pt-10 bg-custom-purple relative max-h-[50vw] min-h-[45vw] md:min-h-[55vh] overflow-hidden">
+      <div className="iphone14:w-[95vw] iphone14:min-h-[78vh] iphone12:min-h-[78vh]  sm:w-72 md:w-80 lg:w-80 xl:w-96 mx-auto flex flex-col justify-center items-center shadow-xl pt-5 md:pt-10 bg-custom-purple relative max-h-[50vw] min-h-[45vw] md:min-h-[55vh] overflow-hidden">
         <div className="w-full sm:w-60 md:w-72 lg:w-80 xl:w-96 absolute -top-[0.2px]">
           <img src={designTop} alt="topDesign" />
         </div>
 
         {!showResult ? (
-          <div className="bg-white mt-20 iphone14:w-[95vw] iphone14:max-h-[55vh]  sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
-            <div className="rounded-full bg-white absolute  w-24 h-24 flex items-center justify-center z-10 iphone14:top-[11.5vw] iphone14:left-40 iphone14:w-18 iphone14:h-18 lg:top-[3.5vw] lg:left-32 md:left-28">
+          <div className="bg-white mt-20 iphone14:w-[95vw] iphone12:w-[95vw] iphone14:max-h-[55vh] iphone12:min-h-[68vh] sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
+            <div className="rounded-full bg-white absolute  w-24 h-24 flex items-center justify-center z-10 iphone14:top-[11.5vw] iphone14:left-40 iphone14:w-18 iphone14:h-18 lg:top-[4.5vw] lg:left-32 md:left-28 iphone12:top-[8.8vw] iphone12:left-32">
               <div className="relative rounded-full flex justify-center items-center">
                 <svg className="w-full h-full transform rotate-90 ">
                   <circle
@@ -254,7 +228,7 @@ const Quiz = () => {
             )}
           </div>
         ) : (
-          <div className="bg-white mt-20 iphone14:w-[95vw] iphone14:max-h-[55vh]  sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
+          <div className="bg-white mt-20 iphone14:w-[95vw] iphone12:w-[95vw] iphone14:max-h-[55vh] iphone12:min-h-[68vh] sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
             <h2 className="text-center font-bold text-xl">Your Result</h2>
 
             <div className="mt-8 flex justify-center items-center relative">
