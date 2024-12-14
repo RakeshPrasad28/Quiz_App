@@ -31,7 +31,7 @@ const Home = () => {
   );
   return (
     <div className="bg-gradient-to-b from-white to-custom-purple w-screen h-screen p-5 md:p-10 flex items-center justify-center">
-      <div className="w-full sm:w-96 md:w-80 lg:w-96 xl:w-96 mx-auto flex flex-col justify-center items-center shadow-xl p-5 md:p-10">
+      <div className="w-full sm:w-96 md:w-80 lg:w-96 xl:w-96 mx-auto flex flex-col justify-center items-center shadow-xl p-5 md:p-10 iphone14:w-[95vw]  iphone14:min-h-[65vh]">
         <div className="flex justify-center items-center my-10 md:my-20">
           <img
             src={Group3}

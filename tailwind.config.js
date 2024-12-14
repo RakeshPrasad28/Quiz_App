@@ -14,6 +14,9 @@ export default {
         'bg-custom-not-attended-background':'#f5f5f5',
         'button-color':'#ff3b40'
       },
+      screens:{
+        'iphone14': '430px',
+      }
     },
   },
   plugins: [],

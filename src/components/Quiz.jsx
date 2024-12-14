@@ -18,7 +18,7 @@ const Quiz = () => {
   const [showResult, setShowResult] = useState(false);
   const [showAnswerTimer, setShowAnswerTimer] = useState(true);
   const [inputAnswer, setInputAnswer] = useState("");
-  const [timeTaken, setTimeTaken] = useState(0); // Time tracker for each question
+  const [timeTaken, setTimeTaken] = useState(0); 
   const { question, choices, correctAnswer, type } = questions[currentQuestion];
 
   useEffect(() => {
@@ -48,6 +48,7 @@ const Quiz = () => {
   };
 
   const onAnswerClick = (answer, index) => {
+    // console.log(answer,"answer")
     setAnswerIndex(index);
     if (answer === correctAnswer) {
       setAnswer(true);
@@ -123,12 +124,40 @@ const Quiz = () => {
         />
       );
     }
+  
+    if (type === "Image MCQs") {
+      return (
+        <div className="mt-5 grid grid-cols-2 gap-4">
+          {choices &&
+            choices.map((answer, index) => (
+              <div
+                key={index}
+                onClick={() => onAnswerClick(answer.label, index)}
+                className={`${
+                  answerIndex === index
+                    ? "bg-custom-correct-background"
+                    : "bg-custom-option-background"
+                } mt-5 rounded-lg cursor-pointer hover:scale-105 ease-in-out duration-300 flex flex-col items-center`}
+              >
+                <img
+                  src={answer.image} 
+                  alt={answer.label}
+                  className={`rounded-lg ${answerIndex === index ? "border-4 border-green-500" : ""}`}
+                  style={{ maxWidth: "150px", maxHeight: "150px" }} 
+                />
+                <span className="mt-2 text-center">{answer.label}</span>
+              </div>
+            ))}
+        </div>
+      );
+    }
+  
     return (
       <div className="mt-5">
         {choices &&
           choices.map((answer, index) => (
             <div
-              key={answer}
+              key={index}
               onClick={() => onAnswerClick(answer, index)}
               className={`${
                 answerIndex === index
@@ -148,6 +177,7 @@ const Quiz = () => {
       </div>
     );
   };
+  
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
   const percentage = (result.correctAnswers / questions.length) * 100;
@@ -157,14 +187,14 @@ const Quiz = () => {
 
   return (
     <div className="bg-gradient-to-b from-white to-custom-purple w-screen h-screen py-5 md:py-10 flex items-center justify-center">
-      <div className="w-full sm:w-72 md:w-80 lg:w-80 xl:w-96 mx-auto flex flex-col justify-center items-center shadow-xl pt-5 md:pt-10 bg-custom-purple relative max-h-[50vw] min-h-[45vw] overflow-hidden">
+      <div className="iphone14:w-[95vw]  iphone14:min-h-[65vh] sm:w-72 md:w-80 lg:w-80 xl:w-96 mx-auto flex flex-col justify-center items-center shadow-xl pt-5 md:pt-10 bg-custom-purple relative max-h-[50vw] min-h-[45vw] md:min-h-[55vh] overflow-hidden">
         <div className="w-full sm:w-60 md:w-72 lg:w-80 xl:w-96 absolute -top-[0.2px]">
           <img src={designTop} alt="topDesign" />
         </div>
 
         {!showResult ? (
-          <div className="bg-white mt-20 w-full sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
-            <div className="rounded-full bg-white absolute top-[3.5vw] left-36 w-24 h-24 flex items-center justify-center z-10">
+          <div className="bg-white mt-20 iphone14:w-[95vw] iphone14:max-h-[55vh]  sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
+            <div className="rounded-full bg-white absolute  w-24 h-24 flex items-center justify-center z-10 iphone14:top-[11.5vw] iphone14:left-40 iphone14:w-18 iphone14:h-18 lg:top-[3.5vw] lg:left-32 md:left-28">
               <div className="relative rounded-full flex justify-center items-center">
                 <svg className="w-full h-full transform rotate-90 ">
                   <circle
@@ -220,11 +250,11 @@ const Quiz = () => {
               </div>
             </div>
             {showAnswerTimer && (
-              <AnswerTimer duration={10} onTimeUp={onTimeUp} />
+              <AnswerTimer duration={1000} onTimeUp={onTimeUp} />
             )}
           </div>
         ) : (
-          <div className="bg-white mt-20 w-full sm:w-96 md:w-80 lg:w-96 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
+          <div className="bg-white mt-20 iphone14:w-[95vw] iphone14:max-h-[55vh]  sm:w-60 md:w-72 lg:w-80 xl:w-96 rounded-tl-3xl rounded-tr-3xl px-5 py-5 max-h-[50vw] min-h-[45vw] overflow-scroll">
             <h2 className="text-center font-bold text-xl">Your Result</h2>
 
             <div className="mt-8 flex justify-center items-center relative">
@@ -234,7 +264,7 @@ const Quiz = () => {
                   cy="100"
                   r="80"
                   fill="none"
-                  stroke="#e6e6e6" // Gray background color
+                  stroke="#e6e6e6" 
                   strokeWidth="20"
                 />
                 <defs>
@@ -245,7 +275,7 @@ const Quiz = () => {
                     x2="100%"
                     y2="100%"
                   >
-                    {/* Four color stops: Red, Orange, Yellow, Green */}
+                  
                     <stop offset="0%" stopColor="red" />
                     <stop offset="33%" stopColor="orange" />
                     <stop offset="66%" stopColor="yellow" />
@@ -253,29 +283,27 @@ const Quiz = () => {
                   </linearGradient>
                 </defs>
 
-                {/* Full progress arc with gradient */}
                 <circle
                   cx="100"
                   cy="100"
                   r="80"
                   fill="none"
-                  stroke="url(#progressGradient)" // Gradient stroke for the semi-circle
+                  stroke="url(#progressGradient)" 
                   strokeWidth="20"
-                  strokeDasharray="502.65" // Circumference of the circle
-                  strokeDashoffset={0} // Initial offset (empty background)
+                  strokeDasharray="502.65" 
+                  strokeDashoffset={0} 
                   strokeLinecap="round"
-                  transform="rotate(-90 100 100)" // Rotated to start from the top
+                  transform="rotate(-90 100 100)" 
                 />
 
-                {/* Progress arc that moves based on percentage */}
                 <circle
                   cx="100"
                   cy="100"
                   r="80"
                   fill="none"
-                  stroke="url(#progressGradient)" // Gradient stroke for the moving progress
+                  stroke="url(#progressGradient)" 
                   strokeWidth="20"
-                  strokeDasharray="502.65" // Circumference of the circle
+                  strokeDasharray="502.65" 
                   strokeDashoffset={502.65 - (percentage / 100) * 502.65}
                   strokeLinecap="round"
                   transform="rotate(-90 100 100)"
@@ -287,10 +315,9 @@ const Quiz = () => {
                   transform={`rotate(${getNeedleRotation(percentage)} 100 100)`}
                 />
 
-                {/* Display percentage in the center (pull it upwards) */}
                 <text
                   x="100"
-                  y="85" // Adjusted the y position to pull the text upwards
+                  y="85" 
                   textAnchor="middle"
                   alignmentBaseline="middle"
                   fontSize="24"
